@@ -22,7 +22,7 @@ public class RentFlat implements Serializable {
     @Id
     private String id;
     @Field(value = "source")
-    private Source source = Source.REALT_BY;
+    private Source source;
     private long objectId;
     private boolean highlighted;
     private String link;
