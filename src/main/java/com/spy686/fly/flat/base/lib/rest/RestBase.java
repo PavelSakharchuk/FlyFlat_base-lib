@@ -1,6 +1,8 @@
 package com.spy686.fly.flat.base.lib.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spy686.fly.flat.base.lib.constants.Endpoint;
+import com.spy686.fly.flat.base.lib.constants.PropertiesValue;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -77,6 +79,7 @@ public abstract class RestBase {
 
     private RequestSpecification getSpecification() {
         requestSpecification = new RequestSpecBuilder()
+                // TODO: 02.11.2021: p.sakharchuk: Need to get from application.properties
                 .setBaseUri(PropertiesValue.Config.BASE_URI)
                 .build();
         requestSpecification.when().log().uri();
