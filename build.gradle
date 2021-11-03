@@ -1,113 +1,29 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
+	id 'org.springframework.boot' version '2.5.6'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
 }
 
-group = 'com.spy686'
+group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
-tasks.withType(JavaCompile){
-    options.encoding = 'UTF-8'
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
 }
 
 repositories {
-    maven { url 'https://jitpack.io' }
-    // For resolve https://repo.maven.apache.org/maven2/javax/jms/jms/1.1/jms-1.1.jar issue
-    maven {
-        url "https://repo.maven.apache.org/maven2/"
-        artifactUrls "https://repository.jboss.org/maven2/"
-    }
-    mavenCentral()
+	mavenCentral()
 }
 
-// For resolve issue: https://stackoverflow.com/questions/61020200/getting-java-lang-abstractmethoderror-when-i-test-using-rest-assured
-ext["groovy.version"] = "3.0.3"
-
 dependencies {
-    /**
-     * Spring Boot Starter
-     *
-     * Spring Boot Starter Web: Starter for building web, including RESTful, applications using Spring MVC.
-     *      Uses Tomcat as the default embedded container
-     * Spring Boot Starter Test: Starter for testing Spring Boot applications with libraries including JUnit Jupiter,
-     *      Hamcrest and Mockito
-     *
-     * https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-     */
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    /**
-     * Spring Boot Starter Data MongoDB
-     *
-     * Starter for using MongoDB document-oriented database and Spring Data MongoDB
-     *
-     * https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb
-     */
-    compile 'org.springframework.boot:spring-boot-starter-data-mongodb:2.5.2'
-    /**
-     * REST Assured
-     * Java DSL for easy testing of REST services
-     *
-     * https://mvnrepository.com/artifact/io.rest-assured/rest-assured
-     * https://mvnrepository.com/artifact/io.rest-assured/json-path
-     * https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator
-     */
-    implementation 'io.rest-assured:rest-assured:4.3.3'
-    implementation 'io.rest-assured:json-path:4.3.3'
-    implementation 'io.rest-assured:json-schema-validator:4.3.3'
-    implementation 'io.rest-assured:rest-assured-all:4.3.3'
-    testCompileOnly  'io.rest-assured:rest-assured:4.3.3'
-    testCompileOnly  'io.rest-assured:json-path:4.3.3'
-    testCompileOnly  'io.rest-assured:json-schema-validator:4.3.3'
-    testCompileOnly 'io.rest-assured:rest-assured-all:4.3.3'
-    /**
-     * JSoup Java HTML Parser
-     * jsoup is a Java library for working with real-world HTML.
-     * It provides a very convenient API for extracting and manipulating
-     * data, using the best of DOM, CSS, and jquery-like methods.
-     * jsoup implements the WHATWG HTML5 specification, and parses HTML to the same DOM as modern browsers do.
-     *
-     * https://mvnrepository.com/artifact/org.jsoup/jsoup
-     */
-    implementation 'org.jsoup:jsoup:1.13.1'
-    /**
-     * Lombok
-     *
-     * Spice up your java: Automatic Resource Management, automatic generation
-     * of getters, setters, equals, hashCode and toString, and more!
-     *
-     * https://mvnrepository.com/artifact/org.projectlombok/lombok
-     */
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    testCompileOnly 'org.projectlombok:lombok'
-    testAnnotationProcessor 'org.projectlombok:lombok'
-    /**
-     * Awaitility
-     *
-     * A Java DSL for synchronizing asynchronous operations
-     *
-     * https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-     */
-    implementation 'org.awaitility:awaitility:4.0.3'
-    /**
-     * JUnit5
-     * JUnit is a unit testing framework for Java, created by Erich Gamma and Kent Beck.
-     * Module "junit-jupiter-api" of JUnit 5.
-     * Module "junit-jupiter-engine" of JUnit 5.
-     *
-     * https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
-     * https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
-     */
-    implementation 'org.junit.jupiter:junit-jupiter-engine:5.4.0'
-    implementation 'org.junit.jupiter:junit-jupiter-api:5.4.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
